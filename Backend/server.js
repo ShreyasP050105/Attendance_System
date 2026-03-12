@@ -10,8 +10,7 @@ const adminRoutes = require("./routes/admin");
 const User = require("./models/User");
 const userRoutes = require("./routes/users");
 
-// Middleware FIRST — before any routes
-app.use(cors());
+
 app.use(express.json());
 
 // Routes AFTER middleware

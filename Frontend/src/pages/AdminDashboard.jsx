@@ -11,6 +11,7 @@ import {
 } from "react-icons/fa";
 
 function AdminDashboard() {
+  const API_URL = import.meta.env.VITE_API_URL || "https://attendance-system-9nt4.onrender.com";
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -29,7 +30,7 @@ function AdminDashboard() {
 
   const fetchStudents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/students");
+      const res = await axios.get(`${API_URL}/api/admin/students`);
 
       // The admin route returns { success, students: [...] }
       if (res.data.students) {

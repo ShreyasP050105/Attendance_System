@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaEnvelope, FaLock, FaSignInAlt } from "react-icons/fa";
 
 function LoginPage() {
+  const API_URL = import.meta.env.VITE_API_URL || "https://attendance-system-9nt4.onrender.com";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -17,7 +18,7 @@ function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/users/login", {
+      const res = await axios.post(`${API_URL}/api/users/login`, {
         email,
         password,
       });

@@ -15,6 +15,7 @@ import {
 
 function Dashboard() {
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || "https://attendance-system-9nt4.onrender.com";
 
   const user = JSON.parse(localStorage.getItem("user"));
   const userName = user?.name;
@@ -34,7 +35,7 @@ function Dashboard() {
 
   const getSubjects = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/subjects/${userId}`);
+      const res = await axios.get(`${API_URL}/api/subjects/${userId}`);
       setSubjects(res.data);
     } catch (err) {
       console.log(err);
@@ -46,7 +47,7 @@ function Dashboard() {
     if (newSubject.trim() === "") return;
 
     try {
-      const res = await axios.post("http://localhost:5000/api/subjects/add", {
+      const res = await axios.post(`${API_URL}/api/subjects/add`, {
         userId,
         name: newSubject,
       });
@@ -65,7 +66,7 @@ function Dashboard() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/subjects/${id}`);
+      await axios.delete(`${API_URL}/api/subjects/${id}`);
       setSubjects(subjects.filter((sub) => sub._id !== id));
     } catch (err) {
       console.log(err);
@@ -87,7 +88,7 @@ function Dashboard() {
     const attended = parseInt(subject.attended || 0);
 
     try {
-      await axios.put(`http://localhost:5000/api/subjects/update/${subject._id}`, {
+      await axios.put(`${API_URL}/api/subjects/update/${subject._id}`, {
         total,
         attended,
       });
@@ -118,7 +119,7 @@ function Dashboard() {
 
     setSubjects(updated);
 
-    await axios.put(`http://localhost:5000/api/subjects/update/${updated[index]._id}`, {
+    await axios.put(`${API_URL}/api/subjects/update/${updated[index]._id}`, {
       total,
       attended,
     });
@@ -131,7 +132,7 @@ function Dashboard() {
 
     setSubjects(updated);
 
-    await axios.put(`http://localhost:5000/api/subjects/update/${updated[index]._id}`, {
+    await axios.put(`${API_URL}/api/subjects/update/${updated[index]._id}`, {
       total: updated[index].total,
       attended: updated[index].attended,
     });
@@ -144,7 +145,7 @@ function Dashboard() {
 
     setSubjects(updated);
 
-    await axios.put(`http://localhost:5000/api/subjects/update/${updated[index]._id}`, {
+    await axios.put(`${API_URL}/api/subjects/update/${updated[index]._id}`, {
       total: updated[index].total,
       attended: updated[index].attended,
     });
@@ -187,7 +188,7 @@ function Dashboard() {
     setSubjects(updated);
 
     try {
-      await axios.put(`http://localhost:5000/api/subjects/update/${updated[index]._id}`, {
+      await axios.put(`${API_URL}/api/subjects/update/${updated[index]._id}`, {
         total: 0,
         attended: 0,
       });
