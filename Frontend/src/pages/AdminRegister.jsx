@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock, FaUserPlus } from "react-icons/fa";
 
 function AdminRegister() {
-  const API_URL = import.meta.env.VITE_API_URL || "https://attendance-system-9nt4.onrender.com";
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ function AdminRegister() {
     setLoading(true);
 
     try {
-      await axios.post(`${API_URL}/api/users/register`, {
+      await axios.post(`${API_URL}/api/auth/register`, {
         name,
         email,
         password,

@@ -12,6 +12,7 @@ const userRoutes = require("./routes/users");
 
 
 app.use(express.json());
+app.use(cors());
 
 // Routes AFTER middleware
 app.use("/api/admin", adminRoutes);
