@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../api";
 import {
   FaBook,
   FaSignOutAlt,
@@ -15,7 +16,6 @@ import {
 
 function Dashboard() {
   const navigate = useNavigate();
-  const API_URL = import.meta.env.VITE_API_URL || "https://attendance-system-9nt4.onrender.com";
 
   const user = JSON.parse(localStorage.getItem("user"));
   const userName = user?.name;

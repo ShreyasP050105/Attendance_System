@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL } from "../api";
 import {
   FaSignOutAlt,
   FaUsers,
@@ -11,7 +12,6 @@ import {
 } from "react-icons/fa";
 
 function AdminDashboard() {
-  const API_URL = import.meta.env.VITE_API_URL || "https://attendance-system-9nt4.onrender.com";
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
